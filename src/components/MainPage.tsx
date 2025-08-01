@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Star, Sparkles, Calendar, Trophy, Users, ArrowLeft, Mosque } from 'lucide-react';
+import { BookOpen, Star, Sparkles, Calendar, Trophy, Users, ArrowLeft, Fuel as Mosque } from 'lucide-react';
 
 interface MainPageProps {
   onNavigate: (page: 'results' | 'schedule') => void;
