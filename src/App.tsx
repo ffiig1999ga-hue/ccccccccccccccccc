@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { MainPage } from './components/MainPage';
+import { Navigation } from './components/Navigation';
 import { ExamSchedule } from './components/ExamSchedule';
 import { SearchSection } from './components/SearchSection';
 import { ResultCard } from './components/ResultCard';
@@ -27,51 +28,24 @@ function App() {
     setCurrentPage(page);
   };
 
+  const handleFullNavigation = (page: 'main' | 'results' | 'schedule') => {
+    setCurrentPage(page);
+    // Reset search when navigating
+    if (page !== 'results') {
+      setSearchResult(null);
+      setSearchAttempted(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50" dir="rtl">
       {currentPage === 'main' ? (
-        <MainPage onNavigate={handleNavigation} />
+        <MainPage onNavigate={(page) => handleFullNavigation(page)} />
       ) : (
         <>
           <Header />
           
-          {/* Navigation */}
-          <nav className="bg-white shadow-md py-4">
-            <div className="container mx-auto px-4">
-              <div className="flex justify-center gap-4">
-                <button
-                  onClick={() => setCurrentPage('main')}
-                  className={`px-6 py-3 rounded-xl font-semibold transition-all ${
-                    currentPage === 'main'
-                      ? 'bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  الصفحة الرئيسية
-                </button>
-                <button
-                  onClick={() => setCurrentPage('results')}
-                  className={`px-6 py-3 rounded-xl font-semibold transition-all ${
-                    currentPage === 'results'
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  النتائج
-                </button>
-                <button
-                  onClick={() => setCurrentPage('schedule')}
-                  className={`px-6 py-3 rounded-xl font-semibold transition-all ${
-                    currentPage === 'schedule'
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  جدول الاختبارات
-                </button>
-              </div>
-            </div>
-          </nav>
+          <Navigation currentPage={currentPage} onNavigate={handleFullNavigation} />
           
           {currentPage === 'results' ? (
             <>
