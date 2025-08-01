@@ -194,6 +194,51 @@ body {
   }
 }
 
+@keyframes floatQuran {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+  66% {
+    transform: translateY(-10px) rotate(-3deg);
+  }
+}
+
+@keyframes floatStar {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+  }
+}
+
+@keyframes glowMain {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                 0 0 20px rgba(255, 255, 255, 0.6),
+                 0 0 30px rgba(255, 193, 7, 0.8),
+                 0 0 40px rgba(255, 193, 7, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1),
+                 0 0 30px rgba(255, 255, 255, 0.8),
+                 0 0 40px rgba(255, 193, 7, 1),
+                 0 0 50px rgba(255, 193, 7, 0.8);
+  }
+}
+
+@keyframes mosqueGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 193, 7, 0.9));
+  }
+}
+
 /* Animation classes */
 .animate-slideInDown {
   animation: slideInDown 1s ease-out;
@@ -239,6 +284,14 @@ body {
   animation: pulseDot 2s ease-in-out infinite;
 }
 
+.floating-quran {
+  animation: floatQuran 6s ease-in-out infinite;
+}
+
+.floating-star {
+  animation: floatStar 4s ease-in-out infinite;
+}
+
 .floating-sparkle {
   animation: float 4s ease-in-out infinite;
 }
@@ -248,8 +301,16 @@ body {
   animation: glow 2s ease-in-out infinite alternate;
 }
 
+.glowing-text-main {
+  animation: glowMain 3s ease-in-out infinite alternate;
+}
+
 .trophy-glow {
   filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.6));
+}
+
+.mosque-glow {
+  animation: mosqueGlow 2s ease-in-out infinite;
 }
 
 .subtitle-glow {
@@ -335,6 +396,20 @@ button:active {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradientShift 3s ease infinite;
+}
+
+.gradient-text-golden {
+  background: linear-gradient(45deg, #FFD700, #FFA500, #FFFF00, #FFD700);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* Radial gradient */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
 }
 
 /* Loading spinner */
